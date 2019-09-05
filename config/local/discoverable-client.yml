@@ -2,8 +2,8 @@ spring.profiles.include: diag
 
 apiml:
     service:
-        hostname: localhost
-        ipAddress: 127.0.0.1
+        hostname: aicji01w10.ca.com
+        ipAddress: 10.57.18.102
         port: 10012
         discoveryServiceUrls: https://localhost:10011/eureka/
 
@@ -17,7 +17,7 @@ server:
         keyAlias: localhost
         keyPassword: password
         keyStore: keystore/localhost/localhost.keystore.p12
-        # keyStore: keystore/selfsigned/localhost.keystore.p12        
+        # keyStore: keystore/selfsigned/localhost.keystore.p12
         # keyStore: keystore/selfsigned/localhost-untrusted.keystore.p12
         keyStorePassword: password
         keyStoreType: PKCS12
