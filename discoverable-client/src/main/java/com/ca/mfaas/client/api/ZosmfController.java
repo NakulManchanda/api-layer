@@ -32,7 +32,7 @@ public class ZosmfController {
 
     @GetMapping(value = "/request")
     public String request() {
-        String uri = "https://ca32.ca.com:1443/zosmf/restjobs/jobs";
+        String uri = "https://ca32.lvn.broadcom.net:1443/zosmf/restjobs/jobs";
 
         String credentials = "aicji01:hes99lo";
         String base64Credentials = new String(Base64.encodeBase64(credentials.getBytes()));
@@ -45,7 +45,8 @@ public class ZosmfController {
         headers.setContentType(MediaType.APPLICATION_JSON);
         headers.add("X-CSRF-ZOSMF-HEADER", "zosmf");
        // headers.add("X-IBM-Notification-URL", "https://aicji01w10.ca.com:10012/discoverableclient/api/v1/zosmf/response");
-        headers.add("X-IBM-Notification-URL", "https://10.57.18.102:10012/discoverableclient/api/v1/zosmf/response");
+         headers.add("X-IBM-Notification-URL", "https://10.57.18.102:10012/discoverableclient/api/v1/zosmf/response");
+       // headers.add("X-IBM-Notification-URL", "https://ca31.lvn.broadcom.net:10213/discoverableclient/api/v1/zosmf/response");
         headers.add("Authorization", "Basic " + base64Credentials);
 
         ResponseEntity<String> response;

@@ -6,6 +6,9 @@ apiml:
         ipAddress: 10.57.18.102
         port: 10012
         discoveryServiceUrls: https://localhost:10011/eureka/
+    security:
+        ssl:
+            verifySslCertificatesOfServices: false
 
 spring:
     output:
@@ -15,6 +18,7 @@ spring:
 server:
     ssl:
         keyAlias: localhost
+
         keyPassword: password
         keyStore: keystore/localhost/localhost.keystore.p12
         # keyStore: keystore/selfsigned/localhost.keystore.p12

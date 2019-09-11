@@ -1,6 +1,6 @@
 logging:
     level:
-        ROOT: INFO
+        ROOT: DEBUG
         com.ca.mfaas: INFO
         org.springframework: WARN
         org.apache.catalina: WARN
@@ -22,7 +22,7 @@ apiml:
         hostname: localhost  # Hostname that is advertised in Eureka. Default is valid only for localhost
         port: 10012  # Default port name for discoverable-clinet service
         ipAddress: 127.0.0.1  # IP address that is advertised in Eureka. Default is valid only for localhost
-        preferIpAddress: false        
+        preferIpAddress: false
 
 spring:
     application:
@@ -43,7 +43,7 @@ server:
     servlet:
         contextPath: /discoverableclient
     ssl:
-        enabled: true
+        enabled: false
         protocol: TLSv1.2
         enabled-protocols: TLSv1.2
         ciphers: ${apiml.security.ssl.ciphers}
