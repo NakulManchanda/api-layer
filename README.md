@@ -1,6 +1,6 @@
 # API Mediation Layer
 
-[![Build Status](https://wash.zowe.org:8443/job/API_Mediation/job/master/badge/icon)](https://wash.zowe.org:8443/job/API_Mediation/job/master/)
+[![Build Status](https://wash.zowe.org:8443/buildStatus/icon?job=API_Mediation/master)](https://wash.zowe.org:8443/job/API_Mediation/job/master/)
 
 [![codecov](https://codecov.io/gh/zowe/api-layer/branch/master/graph/badge.svg)](https://codecov.io/gh/zowe/api-layer)
 [![SonarQube](https://jayne.zowe.org:9000/api/project_badges/measure?project=zowe%3Aapi-mediation-layer&metric=alert_status)](https://jayne.zowe.org:9000/dashboard?id=zowe%3Aapi-mediation-layer)
