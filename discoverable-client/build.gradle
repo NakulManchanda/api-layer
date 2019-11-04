@@ -38,7 +38,15 @@ dependencies {
     implementation libraries.spring_boot_starter_actuator
     implementation libraries.spring_boot_starter_web
     implementation libraries.spring_boot_starter_websocket
-    implementation libraries.springFox
+
+    //Workaround to fix warning - https://github.com/springfox/springfox/issues/2265
+    implementation(libraries.springFox) {
+        exclude module: 'swagger-annotations'
+        exclude module: 'swagger-models'
+    }
+    implementation "io.swagger:swagger-annotations:1.5.21"
+    implementation "io.swagger:swagger-models:1.5.21"
+
     implementation libraries.bootstrap
     implementation libraries.jquery
     implementation libraries.find_bugs
