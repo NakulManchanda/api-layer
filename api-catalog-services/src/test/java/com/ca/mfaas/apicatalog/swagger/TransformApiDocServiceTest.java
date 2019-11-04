@@ -89,7 +89,7 @@ public class TransformApiDocServiceTest {
         routedServices.addRoutedService(routedService2);
         routedServices.addRoutedService(routedService3);
 
-        ApiInfo apiInfo = new ApiInfo("org.zowe.apicatalog", "api/v1", null, "https://localhost:10014/apicatalog/api-doc", "https://www.zowe.org");
+        ApiInfo apiInfo = new ApiInfo("org.zowe.apicatalog", "api/v1", null, "https://localhost:10012/apicatalog/api-doc", "https://www.zowe.org");
         ApiDocInfo apiDocInfo = new ApiDocInfo(apiInfo, apiDocContent, routedServices);
 
         String actualContent = transformApiDocService.transformApiDoc(SERVICE_ID, apiDocInfo);
@@ -179,7 +179,7 @@ public class TransformApiDocServiceTest {
         routedServices.addRoutedService(routedService);
         routedServices.addRoutedService(routedService2);
 
-        ApiInfo apiInfo = new ApiInfo("org.zowe.apicatalog", "api/v1", null, "https://localhost:10014/apicatalog/api-doc", null);
+        ApiInfo apiInfo = new ApiInfo("org.zowe.apicatalog", "api/v1", null, "https://localhost:10012/apicatalog/api-doc", null);
         ApiDocInfo apiDocInfo = new ApiDocInfo(apiInfo, apiDocContent, routedServices);
 
         String actualContent = transformApiDocService.transformApiDoc(SERVICE_ID, apiDocInfo);
@@ -206,7 +206,7 @@ public class TransformApiDocServiceTest {
         routedServices.addRoutedService(routedService2);
         routedServices.addRoutedService(routedService3);
 
-        ApiInfo apiInfo = new ApiInfo("org.zowe.apicatalog", "api/v1", null, "https://localhost:10014/apicatalog/api-doc", "https://www.zowe.org");
+        ApiInfo apiInfo = new ApiInfo("org.zowe.apicatalog", "api/v1", null, "https://localhost:10012/apicatalog/api-doc", "https://www.zowe.org");
         ApiDocInfo apiDocInfo = new ApiDocInfo(apiInfo, apiDocContent, routedServices);
 
         String actualContent = transformApiDocService.transformApiDoc(SERVICE_ID, apiDocInfo);
@@ -253,7 +253,7 @@ public class TransformApiDocServiceTest {
         routedServices.addRoutedService(routedService);
         routedServices.addRoutedService(routedService2);
 
-        ApiInfo apiInfo = new ApiInfo("org.zowe.apicatalog", "api/v1", null, "https://localhost:10014/apicatalog/api-doc", "https://www.zowe.org");
+        ApiInfo apiInfo = new ApiInfo("org.zowe.apicatalog", "api/v1", null, "https://localhost:10012/apicatalog/api-doc", "https://www.zowe.org");
         ApiDocInfo apiDocInfo = new ApiDocInfo(apiInfo, apiDocContent, routedServices);
 
         String actualContent = transformApiDocService.transformApiDoc(SERVICE_ID, apiDocInfo);

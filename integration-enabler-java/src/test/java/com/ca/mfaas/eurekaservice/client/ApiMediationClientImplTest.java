@@ -27,7 +27,7 @@ public class ApiMediationClientImplTest {
 
     @Test
     public void startEurekaClient() {
-        ApiInfo apiInfo = new ApiInfo("org.zowe.enabler.java", "api/v1", "1.0.0", "https://localhost:10014/apicatalog/api-doc", null);
+        ApiInfo apiInfo = new ApiInfo("org.zowe.enabler.java", "api/v1", "1.0.0", "https://localhost:10012/apicatalog/api-doc", null);
         CatalogUiTile catalogUiTile = new CatalogUiTile("cademoapps", "Sample API Mediation Layer Applications", "Applications which demonstrate how to make a service integrated to the API Mediation Layer ecosystem", "1.0.0");
         Eureka eureka = new Eureka("10021", "localhost", "127.0.0.1");
         Ssl ssl = new Ssl(false, "TLSv1.2", "localhost", "password",

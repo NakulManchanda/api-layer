@@ -33,7 +33,7 @@
                 "description": "Sample Spring Boot 2.x REST API application using the API Mediation Layer enabler",
                 "status": "UP",
                 "secured": false,
-                "homePageUrl": "http://localhost:10012/discoverableclient/"
+                "homePageUrl": "http://localhost:10013/discoverableclient/"
             }
         ],
         "totalServices": 1,

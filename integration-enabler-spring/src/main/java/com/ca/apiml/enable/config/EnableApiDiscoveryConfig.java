@@ -7,21 +7,23 @@
  *
  * Copyright Contributors to the Zowe Project.
  */
-package com.ca.mfaas.client.configuration;
+package com.ca.apiml.enable.config;
 
 import com.ca.mfaas.message.core.MessageService;
-import com.ca.mfaas.message.yaml.YamlMessageService;
 import com.ca.mfaas.message.yaml.YamlMessageServiceInstance;
 import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.ComponentScan;
+import org.springframework.context.annotation.Primary;
 
-@Configuration
-public class ApplicationConfiguration {
-    @Bean
-    public MessageService messageService() {
+@ComponentScan(value = {"com.ca.apiml.enable"})
+public class EnableApiDiscoveryConfig {
+
+   /* @Bean
+    @Primary
+    public MessageService messageServiceDiscovery() {
         MessageService messageService = YamlMessageServiceInstance.getInstance();
-        messageService.loadMessages("/api-messages.yml");
-        messageService.loadMessages("/log-messages.yml");
+        messageService.loadMessages("/integration-enabler-spring-messages.yml");
+
         return messageService;
-    }
+    }*/
 }
