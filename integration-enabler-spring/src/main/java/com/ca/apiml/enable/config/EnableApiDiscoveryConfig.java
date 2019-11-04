@@ -18,12 +18,12 @@ import org.springframework.context.annotation.Primary;
 @ComponentScan(value = {"com.ca.apiml.enable"})
 public class EnableApiDiscoveryConfig {
 
-   /* @Bean
+    @Bean
     @Primary
     public MessageService messageServiceDiscovery() {
         MessageService messageService = YamlMessageServiceInstance.getInstance();
         messageService.loadMessages("/integration-enabler-spring-messages.yml");
 
         return messageService;
-    }*/
+    }
 }

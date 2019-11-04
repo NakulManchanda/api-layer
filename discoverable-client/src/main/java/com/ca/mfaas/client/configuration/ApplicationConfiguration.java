@@ -10,7 +10,6 @@
 package com.ca.mfaas.client.configuration;
 
 import com.ca.mfaas.message.core.MessageService;
-import com.ca.mfaas.message.yaml.YamlMessageService;
 import com.ca.mfaas.message.yaml.YamlMessageServiceInstance;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
