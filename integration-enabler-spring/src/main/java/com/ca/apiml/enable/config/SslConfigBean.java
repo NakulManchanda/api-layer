@@ -13,6 +13,9 @@ import com.ca.mfaas.eurekaservice.client.config.Ssl;
 
 import org.springframework.boot.context.properties.ConfigurationProperties;
 
-@ConfigurationProperties("server.ssl")
+/**
+ * Reads SSL configuration
+ */
+@ConfigurationProperties("apiml.service.ssl")
 public class SslConfigBean extends Ssl {
 }

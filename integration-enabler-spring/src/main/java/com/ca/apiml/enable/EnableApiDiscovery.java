@@ -14,6 +14,10 @@ import org.springframework.context.annotation.Import;
 
 import java.lang.annotation.*;
 
+/**
+ * Annotation for API Mediation Layer integration. Add this to a class definition if you want to register into a APIML
+ * Discovery Service.
+ */
 @Retention(RetentionPolicy.RUNTIME)
 @Target({ElementType.TYPE})
 @Documented

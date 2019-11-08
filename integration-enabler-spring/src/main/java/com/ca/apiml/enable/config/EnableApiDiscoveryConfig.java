@@ -20,7 +20,7 @@ public class EnableApiDiscoveryConfig {
 
     @Bean
     @Primary
-    public MessageService messageServiceDiscovery() {
+    public MessageService messageServiceEnabler() {
         MessageService messageService = YamlMessageServiceInstance.getInstance();
         messageService.loadMessages("/integration-enabler-spring-messages.yml");
 

@@ -27,6 +27,9 @@ import org.springframework.stereotype.Component;
 
 import lombok.extern.slf4j.Slf4j;
 
+/**
+ * Registers service to a Discovery Service when an {@code ApplicationContext} gets initialized or refreshed.
+ */
 @Slf4j
 @Component
 @EnableConfigurationProperties(value = {ApiMediationServiceConfigBean.class, SslConfigBean.class})

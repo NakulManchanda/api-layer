@@ -55,6 +55,15 @@ apiml:
             title: Sample API Mediation Layer Applications
             description: Applications which demonstrate how to make a service integrated to the API Mediation Layer ecosystem
             version: 1.0.0
+        ssl:
+            keyAlias: ${server.ssl.keyAlias}
+            keyPassword: ${server.ssl.keyPassword}
+            keyStore: ${server.ssl.keyStore}
+            keyStorePassword: ${server.ssl.keyStorePassword}
+            keyStoreType: ${server.ssl.keyStoreType}
+            trustStore: ${server.ssl.trustStore}
+            trustStorePassword: ${server.ssl.trustStorePassword}
+            trustStoreType: ${server.ssl.trustStoreType}
         # Following values are provided by the developer:
         scheme: https
         baseUrl: ${apiml.service.scheme}://${apiml.service.hostname}:${server.port}
