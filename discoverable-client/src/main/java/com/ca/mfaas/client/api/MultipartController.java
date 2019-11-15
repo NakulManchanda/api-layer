@@ -9,13 +9,11 @@
  */
 package com.ca.mfaas.client.api;
 
-import io.swagger.annotations.ApiParam;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
-import springfox.documentation.annotations.ApiIgnore;
 
 @RestController
 public class MultipartController {
