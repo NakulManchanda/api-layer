@@ -18,11 +18,12 @@ import com.ca.mfaas.security.SecurityUtils;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
 import org.apache.commons.lang.time.DateUtils;
-import org.junit.Before;
-import org.junit.Test;
-import org.junit.runner.RunWith;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;
-import org.mockito.junit.MockitoJUnitRunner;
+import org.mockito.Mockito;
+import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.mock.web.MockHttpServletRequest;
 
 import javax.servlet.http.Cookie;
@@ -32,10 +33,10 @@ import java.security.PublicKey;
 import java.util.Date;
 import java.util.Optional;
 
-import static org.junit.Assert.*;
+import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.when;
 
-@RunWith(MockitoJUnitRunner.class)
+@ExtendWith(MockitoExtension.class)
 public class AuthenticationServiceTest {
 
     private static final String USER = "Me";
@@ -52,16 +53,16 @@ public class AuthenticationServiceTest {
     @Mock
     private JwtSecurityInitializer jwtSecurityInitializer;
 
-    @Before
+    @BeforeEach
     public void setUp() {
         KeyPair keyPair = SecurityUtils.generateKeyPair("RSA", 2048);
         if (keyPair != null) {
             privateKey = keyPair.getPrivate();
             publicKey = keyPair.getPublic();
         }
-        when(jwtSecurityInitializer.getSignatureAlgorithm()).thenReturn(ALGORITHM);
-        when(jwtSecurityInitializer.getJwtSecret()).thenReturn(privateKey);
-        when(jwtSecurityInitializer.getJwtPublicKey()).thenReturn(publicKey);
+        Mockito.lenient().when(jwtSecurityInitializer.getSignatureAlgorithm()).thenReturn(ALGORITHM);
+        Mockito.lenient().when(jwtSecurityInitializer.getJwtSecret()).thenReturn(privateKey);
+        Mockito.lenient().when(jwtSecurityInitializer.getJwtPublicKey()).thenReturn(publicKey);
 
         authConfigurationProperties = new AuthConfigurationProperties();
         authService = new AuthenticationService(authConfigurationProperties, jwtSecurityInitializer);
@@ -75,10 +76,12 @@ public class AuthenticationServiceTest {
         assertEquals("java.lang.String", jwtToken.getClass().getName());
     }
 
-    @Test(expected = IllegalArgumentException.class)
+    @Test()
     public void shouldThrowExceptionWithNullSecret() {
         when(jwtSecurityInitializer.getJwtSecret()).thenReturn(null);
-        authService.createJwtToken(USER, DOMAIN, LTPA);
+        assertThrows(IllegalArgumentException.class, () -> {
+            authService.createJwtToken(USER, DOMAIN, LTPA);
+        });
     }
 
     @Test
@@ -93,23 +96,29 @@ public class AuthenticationServiceTest {
         assertTrue(jwtValidation.isAuthenticated());
     }
 
-    @Test(expected = TokenNotValidException.class)
+    @Test
     public void shouldThrowExceptionWhenTokenIsInvalid() {
         String jwtToken = authService.createJwtToken(USER, DOMAIN, LTPA);
         String brokenToken = jwtToken + "not";
         TokenAuthentication token = new TokenAuthentication(brokenToken);
-        authService.validateJwtToken(token);
+        assertThrows(TokenNotValidException.class, () -> {
+            authService.validateJwtToken(token);
+        });
     }
 
-    @Test(expected = TokenExpireException.class)
+    @Test
     public void shouldThrowExceptionWhenTokenIsExpired() {
         TokenAuthentication token = new TokenAuthentication(createExpiredJwtToken(privateKey));
-        authService.validateJwtToken(token);
+        assertThrows(TokenExpireException.class, () -> {
+            authService.validateJwtToken(token);
+        });
     }
 
-    @Test(expected = TokenNotValidException.class)
+    @Test
     public void shouldThrowExceptionWhenOccurUnexpectedException() {
-        authService.validateJwtToken(null);
+        assertThrows(TokenNotValidException.class, () -> {
+            authService.validateJwtToken(null);
+        });
     }
 
     @Test
@@ -163,16 +172,20 @@ public class AuthenticationServiceTest {
         assertEquals(LTPA, authService.getLtpaTokenFromJwtToken(jwtToken));
     }
 
-    @Test(expected = TokenNotValidException.class)
+    @Test
     public void shouldThrowExceptionWhenTokenIsInvalidWhileExtractingLtpa() {
         String jwtToken = authService.createJwtToken(USER, DOMAIN, LTPA);
         String brokenToken = jwtToken + "not";
-        authService.getLtpaTokenFromJwtToken(brokenToken);
+        assertThrows(TokenNotValidException.class, () -> {
+            authService.getLtpaTokenFromJwtToken(brokenToken);
+        });
     }
 
-    @Test(expected = TokenExpireException.class)
+    @Test
     public void shouldThrowExceptionWhenTokenIsExpiredWhileExtractingLtpa() {
-        authService.getLtpaTokenFromJwtToken(createExpiredJwtToken(privateKey));
+        assertThrows(TokenExpireException.class, () -> {
+            authService.getLtpaTokenFromJwtToken(createExpiredJwtToken(privateKey));
+        });
     }
 
     private String createExpiredJwtToken(Key secretKey) {

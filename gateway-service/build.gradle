@@ -27,6 +27,10 @@ springBoot {
     }
 }
 
+test {
+    useJUnitPlatform()
+}
+
 gitProperties {
     gitPropertiesDir = new File("${project.rootDir}/${name}/build/resources/main/META-INF")
 }
@@ -56,6 +60,10 @@ dependencies {
     testRuntime libraries.http_client
     testCompile libraries.rest_assured
     testCompile libraries.lombok
+    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.3.1'
+    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.3.1'
+    testCompile group: 'org.mockito', name: 'mockito-junit-jupiter', version: '2.17.0'
+    testCompile libraries.mockito_core
 }
 
 bootJar.archiveName = "${bootJar.baseName}.jar"

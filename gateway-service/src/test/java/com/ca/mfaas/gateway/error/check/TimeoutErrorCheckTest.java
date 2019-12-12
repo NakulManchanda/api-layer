@@ -9,9 +9,6 @@
  */
 package com.ca.mfaas.gateway.error.check;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
-
 import com.ca.mfaas.gateway.error.ErrorUtils;
 import com.ca.mfaas.gateway.error.InternalServerErrorController;
 import com.ca.mfaas.message.api.ApiMessageView;
@@ -19,19 +16,22 @@ import com.ca.mfaas.message.core.MessageService;
 import com.ca.mfaas.message.yaml.YamlMessageService;
 import com.netflix.zuul.exception.ZuulException;
 import com.netflix.zuul.monitoring.MonitoringHelper;
-import org.junit.BeforeClass;
-import org.junit.Test;
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.Test;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.mock.web.MockHttpServletRequest;
 
 import java.net.SocketTimeoutException;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+
 public class TimeoutErrorCheckTest {
     private static final String TEST_MESSAGE = "Hello";
     private static InternalServerErrorController errorController;
 
-    @BeforeClass
+    @BeforeAll
     public static void setup() {
         MonitoringHelper.initMocks();
         MessageService messageService = new YamlMessageService();

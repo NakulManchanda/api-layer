@@ -12,11 +12,12 @@ package com.ca.mfaas.gateway.security.query;
 import com.ca.apiml.security.common.error.AuthMethodNotSupportedException;
 import com.ca.apiml.security.common.token.TokenNotProvidedException;
 import com.ca.mfaas.gateway.security.service.AuthenticationService;
-import org.junit.Before;
-import org.junit.Test;
-import org.junit.runner.RunWith;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;
-import org.mockito.junit.MockitoJUnitRunner;
+import org.mockito.Mockito;
+import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.mock.web.MockHttpServletRequest;
 import org.springframework.mock.web.MockHttpServletResponse;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -25,12 +26,12 @@ import org.springframework.security.web.authentication.AuthenticationSuccessHand
 
 import javax.ws.rs.HttpMethod;
 import java.util.Optional;
-
+import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
-@RunWith(MockitoJUnitRunner.class)
+@ExtendWith(MockitoExtension.class)
 public class QueryFilterTest {
     private MockHttpServletRequest httpServletRequest;
     private MockHttpServletResponse httpServletResponse;
@@ -50,7 +51,7 @@ public class QueryFilterTest {
     @Mock
     private AuthenticationService authenticationService;
 
-    @Before
+    @BeforeEach
     public void setup() {
         queryFilter = new QueryFilter("TEST_ENDPOINT",
             authenticationSuccessHandler,
@@ -74,24 +75,28 @@ public class QueryFilterTest {
         verify(authenticationManager).authenticate(any());
     }
 
-    @Test(expected = AuthMethodNotSupportedException.class)
+    @Test
     public void shouldRejectHttpMethods() {
         httpServletRequest = new MockHttpServletRequest();
         httpServletRequest.setMethod(HttpMethod.POST);
         httpServletResponse = new MockHttpServletResponse();
-
-        queryFilter.attemptAuthentication(httpServletRequest, httpServletResponse);
+        assertThrows(AuthMethodNotSupportedException.class, () -> {
+            queryFilter.attemptAuthentication(httpServletRequest, httpServletResponse);
+        });
     }
 
-    @Test(expected = TokenNotProvidedException.class)
+    @Test
     public void shouldRejectIfTokenIsNotPresent() {
         httpServletRequest = new MockHttpServletRequest();
         httpServletRequest.setMethod(HttpMethod.GET);
         httpServletResponse = new MockHttpServletResponse();
-        when(authenticationService.getJwtTokenFromRequest(any())).thenReturn(
+        assertThrows(TokenNotProvidedException.class, () -> {
+                queryFilter.attemptAuthentication(httpServletRequest, httpServletResponse);
+            });
+
+        Mockito.lenient().when(authenticationService.getJwtTokenFromRequest(any())).thenReturn(
             Optional.empty()
         );
 
-        queryFilter.attemptAuthentication(httpServletRequest, httpServletResponse);
     }
 }

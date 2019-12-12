@@ -16,11 +16,11 @@ import com.ca.mfaas.gateway.security.service.JwtSecurityInitializer;
 import com.ca.mfaas.security.SecurityUtils;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import io.jsonwebtoken.SignatureAlgorithm;
-import org.junit.Before;
-import org.junit.Test;
-import org.junit.runner.RunWith;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;
-import org.mockito.junit.MockitoJUnitRunner;
+import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.mock.web.MockHttpServletRequest;
@@ -30,10 +30,10 @@ import java.security.Key;
 import java.security.KeyPair;
 import java.security.PublicKey;
 
-import static org.junit.Assert.*;
+import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.when;
 
-@RunWith(MockitoJUnitRunner.class)
+@ExtendWith(MockitoExtension.class)
 public class SuccessfulQueryHandlerTest {
     private MockHttpServletRequest httpServletRequest;
     private MockHttpServletResponse httpServletResponse;
@@ -47,7 +47,7 @@ public class SuccessfulQueryHandlerTest {
     @Mock
     private JwtSecurityInitializer jwtSecurityInitializer;
 
-    @Before
+    @BeforeEach
     public void setup() {
         httpServletRequest = new MockHttpServletRequest();
         httpServletResponse = new MockHttpServletResponse();

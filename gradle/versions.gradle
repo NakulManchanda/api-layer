@@ -22,7 +22,7 @@ ext {
     javaxValidationApiVersion = "2.0.1.Final"
     esmClientVersion = '2.0.0-SNAPSHOT'
     gsonVersion = '2.8.2'
-    mockitoCoreVersion = '2.15.0'
+    mockitoCoreVersion = '2.23.4'
     zsslVersion = '1.0.0'
     tomcatVersion = '8.5.33'
     commonsLang3Version = '3.7'

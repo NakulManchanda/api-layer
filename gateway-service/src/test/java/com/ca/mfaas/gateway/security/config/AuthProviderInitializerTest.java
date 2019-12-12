@@ -13,8 +13,8 @@ import com.ca.mfaas.gateway.security.login.LoginProvider;
 import com.ca.mfaas.gateway.security.login.dummy.DummyAuthenticationProvider;
 import com.ca.mfaas.gateway.security.login.zosmf.ZosmfAuthenticationProvider;
 import com.ca.mfaas.gateway.security.query.TokenAuthenticationProvider;
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 
 import static org.mockito.Mockito.*;
@@ -25,7 +25,7 @@ public class AuthProviderInitializerTest {
     private TokenAuthenticationProvider tokenAuthenticationProvider;
     private ZosmfAuthenticationProvider zosmfAuthenticationProvider;
 
-    @Before
+    @BeforeEach
     public void setup() {
         dummyAuthenticationProvider = mock(DummyAuthenticationProvider.class);
         tokenAuthenticationProvider = mock(TokenAuthenticationProvider.class);

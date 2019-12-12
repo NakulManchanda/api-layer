@@ -9,8 +9,6 @@
  */
 package com.ca.mfaas.gateway.error;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
 
 import com.ca.mfaas.message.api.ApiMessageView;
 import com.ca.mfaas.message.core.MessageService;
@@ -18,6 +16,9 @@ import com.ca.mfaas.message.yaml.YamlMessageService;
 import org.junit.Test;
 import org.springframework.http.ResponseEntity;
 import org.springframework.mock.web.MockHttpServletRequest;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import javax.servlet.RequestDispatcher;
 

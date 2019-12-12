@@ -11,8 +11,8 @@ package com.ca.mfaas.gateway.filters.post;
 
 import com.ca.apiml.security.common.config.AuthConfigurationProperties;
 import com.netflix.zuul.context.RequestContext;
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 import org.springframework.mock.web.MockHttpServletRequest;
 import org.springframework.mock.web.MockHttpServletResponse;
 
@@ -21,14 +21,15 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import static org.junit.Assert.*;
+import static org.junit.jupiter.api.Assertions.*;
+
 
 public class ConvertAuthTokenInUriToCookieFilterTest {
 
     private final AuthConfigurationProperties authConfigurationProperties = new AuthConfigurationProperties();
     private final ConvertAuthTokenInUriToCookieFilter filter = new ConvertAuthTokenInUriToCookieFilter(authConfigurationProperties);
 
-    @Before
+    @BeforeEach
     public void setUp() {
         RequestContext ctx = RequestContext.getCurrentContext();
         ctx.clear();
