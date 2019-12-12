@@ -28,6 +28,7 @@ import java.util.Optional;
 
 import static org.apache.http.HttpHeaders.LOCATION;
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 import static org.springframework.cloud.netflix.zuul.filters.support.FilterConstants.SERVICE_ID_KEY;
@@ -309,6 +310,16 @@ public class PageRedirectionFilterTest {
 
         verifyLocationUpdatedSameServer(locationHeader.map(Pair::second).orElse(null), location,
             "/" + currentService.getGatewayUrl() + "/" + SERVICE_ID + relativePath);
+    }
+
+    @Test
+    public void shouldFilterIfStatusCodeIs3xx() {
+        String relativePath = "/some/path/login.html";
+        String location = mockLocationSameServer(relativePath);
+        final RequestContext ctx = RequestContext.getCurrentContext();
+        ctx.setResponseStatusCode(302);
+        ctx.addZuulResponseHeader(LOCATION, location);
+        assertTrue(filter.shouldFilter());
     }
 
     private String mockLocationSameServer(String relativeUrl) {
