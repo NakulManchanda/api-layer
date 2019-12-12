@@ -11,6 +11,8 @@ ext.projectsNeedLicense = [
     'integration-enabler-java',
     'integration-enabler-spring-v1',
     'integration-enabler-spring-v2',
+    'onboarding-enabler-spring-v1',
+    'onboarding-enabler-spring-v2',
     'integration-tests',
     'security-module',
     'security-service-client-spring',

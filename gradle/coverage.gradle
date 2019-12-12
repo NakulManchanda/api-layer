@@ -6,6 +6,8 @@ ext.javaProjectsWithUnitTests = [
     'apiml-common',
     'gateway-service',
     'integration-enabler-spring-v2',
+    'onboarding-enabler-spring-v1',
+    'onboarding-enabler-spring-v2',
     'integration-enabler-java',
     'helloworld-spring',
     'security-module',
