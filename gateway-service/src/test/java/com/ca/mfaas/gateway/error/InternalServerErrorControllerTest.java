@@ -13,7 +13,7 @@ package com.ca.mfaas.gateway.error;
 import com.ca.mfaas.message.api.ApiMessageView;
 import com.ca.mfaas.message.core.MessageService;
 import com.ca.mfaas.message.yaml.YamlMessageService;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 import org.springframework.http.ResponseEntity;
 import org.springframework.mock.web.MockHttpServletRequest;
 
@@ -40,5 +40,17 @@ public class InternalServerErrorControllerTest {
         assertEquals("apiml.common.internalRequestError",  response.getBody().getMessages().get(0).getMessageKey());
         assertTrue(response.getBody().getMessages().get(0).getMessageContent().contains("Hello"));
         assertTrue(response.getBody().getMessages().get(0).getMessageContent().contains("/uri"));
+    }
+
+    @Test
+    public void testGenericErrorWhenEntityNull() {
+        MessageService messageService = new YamlMessageService();
+        InternalServerErrorController errorController = new InternalServerErrorController(messageService);
+        MockHttpServletRequest request = new MockHttpServletRequest();
+
+        ResponseEntity<ApiMessageView> response = errorController.error(request);
+
+        assertEquals(500,  response.getStatusCodeValue());
+        assertEquals("apiml.common.internalRequestError",  response.getBody().getMessages().get(0).getMessageKey());
     }
 }
