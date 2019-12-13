@@ -8,7 +8,7 @@ dependencies {
 
     compileOnly libraries.javax_servlet_api
 
-    testCompile libraries.junit
+    testCompile libraries.junitVintage
     testCompile libraries.mockito_core
     testCompile libraries.spring4Mvc
     testCompile libraries.spring4Test

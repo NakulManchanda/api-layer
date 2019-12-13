@@ -29,7 +29,7 @@ ext {
     gradleGitPropertiesVersion = '1.5.1'
     jettyWebSocketClientVersion = '9.4.11.v20180605'
     eurekaClientVersion = '1.8.6'
-    junitVersion = '4.12'
+    junitVintageVersion = '5.5.2'
     logbackVersion = '1.2.3'
     spring4Version = '4.3.7.RELEASE'
     awaitilityVersion = '3.0.0'
@@ -115,7 +115,7 @@ ext {
         apache_commons_lang3               : "org.apache.commons:commons-lang3:${commonsLang3Version}",
         jetty_websocket_client             : "org.eclipse.jetty.websocket:websocket-client:${jettyWebSocketClientVersion}",
         eureka_client                      : "com.netflix.eureka:eureka-client:${eurekaClientVersion}",
-        junit                              : "junit:junit:${junitVersion}",
+        junitVintage                       : "org.junit.vintage:junit-vintage-engine:${junitVintageVersion}",
         logback_classic                    : "ch.qos.logback:logback-classic:${logbackVersion}",
         spring4Mvc                         : "org.springframework:spring-webmvc:${spring4Version}",
         spring4Test                        : "org.springframework:spring-test:${spring4Version}",

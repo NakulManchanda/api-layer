@@ -28,7 +28,7 @@ dependencies {
 
     providedCompile libraries.javax_servlet_api
 
-    testCompile libraries.junit
+    testCompile libraries.junitVintage
     testCompile libraries.mockito_core
     testCompile libraries.spring4Test
     testCompile libraries.json_path

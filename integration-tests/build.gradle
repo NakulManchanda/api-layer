@@ -26,7 +26,7 @@ dependencies {
     compile libraries.jjwt
     compile(project(':apiml-security-common'))
 
-    testCompile libraries.junit
+    testCompile libraries.junitVintage
     testCompile libraries.hamcrest
     testCompile libraries.rest_assured
     testCompile libraries.awaitility
